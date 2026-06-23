@@ -3,64 +3,57 @@
 @source "../**/*.{ts,tsx}";
 
 /*
- * Aquifroid — système « plan d'ingénieur » (blueprint light)
- * Papier glacé, encre ardoise, bleus ColorHunt.
- * Pile dans le ton d'un dossier technique frigorifique.
+ * Aquifroid — Design « Organic / Natural » (wabi-sabi) en bleu froid.
+ * Fraunces (titres) + Nunito (corps), formes amorphes, grain papier,
+ * ombres douces teintées, pills, hover lift.
  */
 
 :root {
-	/* palette ColorHunt */
-	--c-ink: #0c1b2e; /* encre ardoise */
-	--c-ink-soft: #34465c;
-	--c-blue-deep: #2c5ead;
-	--c-blue: #1591dc;
-	--c-blue-bright: #4bb8fa;
-	--c-blue-pale: #c4e2f5;
-	--c-paper: #f4f9fd; /* papier glacé froid */
-	--c-paper-edge: #e6f1fb;
-	--c-paper-warm: #fbfdff;
-	--c-line: #0c1b2e;
-	--c-margin: #9fb6cc;
+	--background: #f7fbff; /* papier de riz froid */
+	--foreground: #1a2a3c; /* encre ardoise */
+	--card: #fdfeff;
+	--primary: #2c5ead;
+	--primary-foreground: #f1f7fd;
+	--secondary: #1591dc;
+	--secondary-foreground: #ffffff;
+	--bright: #4bb8fa;
+	--accent: #c4e2f5;
+	--accent-foreground: #173a57;
+	--muted: #e9f2fb;
+	--muted-foreground: #5f7790;
+	--border: #d4e4f3;
+	--destructive: #d9694e;
 
-	--background: var(--c-paper);
-	--foreground: var(--c-ink);
-	--muted-foreground: #5a7088;
-	--border: var(--c-ink);
-	--accent: var(--c-blue);
-
-	--container-wide: 84rem;
-
-	--font-display: "Mona Sans Variable", "Mona Sans", system-ui, sans-serif;
-	--font-body: "Mona Sans Variable", "Mona Sans", system-ui, sans-serif;
-	--font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+	--font-display: var(--font-fraunces), "Iowan Old Style", Georgia, serif;
+	--font-body: var(--font-nunito), "Mona Sans Variable", system-ui, sans-serif;
 }
 
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
-	--color-ink: var(--c-ink);
-	--color-ink-soft: var(--c-ink-soft);
-	--color-blue-deep: var(--c-blue-deep);
-	--color-blue: var(--c-blue);
-	--color-blue-bright: var(--c-blue-bright);
-	--color-blue-pale: var(--c-blue-pale);
-	--color-paper: var(--c-paper);
-	--color-paper-edge: var(--c-paper-edge);
-	--color-paper-warm: var(--c-paper-warm);
-	--color-margin: var(--c-margin);
+	--color-card: var(--card);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-bright: var(--bright);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-muted: var(--muted);
 	--color-muted-foreground: var(--muted-foreground);
 	--color-border: var(--border);
+	--color-destructive: var(--destructive);
 
 	--font-display: var(--font-display);
 	--font-sans: var(--font-body);
-	--font-mono: var(--font-mono);
+	--font-serif: var(--font-display);
 
-	--radius: 0px;
+	--radius: 1.5rem;
 }
 
 @layer base {
 	* {
-		border-color: var(--c-ink);
+		border-color: var(--border);
 		min-width: 0;
 	}
 	html {
@@ -69,151 +62,90 @@
 		scroll-behavior: smooth;
 	}
 	body {
-		background-color: var(--c-paper);
-		color: var(--c-ink);
+		background-color: var(--background);
+		color: var(--foreground);
 		font-family: var(--font-body);
-		font-feature-settings: "kern", "liga", "ss01";
-		background-image:
-			linear-gradient(to right, rgba(12, 27, 46, 0.035) 1px, transparent 1px),
-			linear-gradient(to bottom, rgba(12, 27, 46, 0.035) 1px, transparent 1px);
-		background-size: 34px 34px;
+		position: relative;
+		overflow-x: hidden;
+	}
+	body::after {
+		content: "";
+		position: fixed;
+		inset: 0;
+		z-index: 100;
+		pointer-events: none;
+		opacity: 0.04;
+		mix-blend-mode: multiply;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	}
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-family: var(--font-display);
+		font-weight: 600;
+		letter-spacing: -0.01em;
 	}
 	::selection {
-		background: var(--c-blue);
-		color: var(--c-paper);
+		background: var(--bright);
+		color: #ffffff;
 	}
 	::-webkit-scrollbar {
-		width: 10px;
-		height: 10px;
+		width: 12px;
 	}
 	::-webkit-scrollbar-track {
-		background: var(--c-paper-edge);
+		background: var(--muted);
 	}
 	::-webkit-scrollbar-thumb {
-		background: var(--c-blue-deep);
-		border: 2px solid var(--c-paper-edge);
+		background: var(--primary);
+		border: 3px solid var(--muted);
+		border-radius: 9999px;
 	}
 }
 
-/* ============ TYPOGRAPHIE TECHNIQUE ============ */
+/* ============ FORMES ORGANIQUES ============ */
 
-@utility container-wide {
-	width: 100%;
-	max-width: var(--container-wide);
-	margin-inline: auto;
-	padding-inline: clamp(1rem, 4vw, 3rem);
+@utility blob-1 {
+	border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+@utility blob-2 {
+	border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+@utility blob-3 {
+	border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
+}
+@utility blob-4 {
+	border-radius: 40% 60% 60% 40% / 70% 40% 60% 30%;
+}
+@utility blob-5 {
+	border-radius: 50% 50% 30% 70% / 50% 40% 60% 50%;
 }
 
-@utility fs-headline {
-	font-family: var(--font-display);
-	font-weight: 800;
-	letter-spacing: -0.03em;
-	line-height: 0.94;
-	text-transform: uppercase;
+/* ============ OMBRES DOUCES ============ */
+
+@utility shadow-soft {
+	box-shadow: 0 4px 22px -4px rgba(44, 94, 173, 0.16);
+}
+@utility shadow-float {
+	box-shadow: 0 14px 44px -12px rgba(21, 145, 220, 0.26);
+}
+@utility shadow-lifted {
+	box-shadow: 0 24px 50px -14px rgba(44, 94, 173, 0.22);
 }
 
-@utility fs-headline-thin {
-	font-family: var(--font-display);
-	font-weight: 300;
-	letter-spacing: -0.02em;
-	line-height: 1;
-}
+/* ============ BOUTON PILL ============ */
 
-@utility fs-body {
-	font-family: var(--font-body);
-	line-height: 1.62;
-}
-
-@utility fs-mono {
-	font-family: var(--font-mono);
-	font-variant-numeric: tabular-nums;
-	font-feature-settings: "ss01";
-}
-
-@utility fs-label {
-	font-family: var(--font-mono);
-	font-size: 0.68rem;
-	letter-spacing: 0.22em;
-	text-transform: uppercase;
-	font-weight: 500;
-	color: var(--c-ink);
-}
-
-@utility fs-label-blue {
-	font-family: var(--font-mono);
-	font-size: 0.68rem;
-	letter-spacing: 0.22em;
-	text-transform: uppercase;
-	font-weight: 600;
-	color: var(--c-blue-deep);
-}
-
-/* ============ COMPOSANTS « PLAN » ============ */
-
-@utility fs-sheet {
-	border: 1px solid var(--c-ink);
-	background: var(--c-paper-warm);
-	position: relative;
-}
-
-@utility fs-axis {
-	background-color: var(--c-paper-warm);
-	background-image:
-		linear-gradient(to right, rgba(44, 94, 173, 0.14) 1px, transparent 1px),
-		linear-gradient(to bottom, rgba(44, 94, 173, 0.14) 1px, transparent 1px);
-	background-size: 28px 28px;
-}
-
-@utility fs-dim {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-	color: var(--c-blue-deep);
-	font-family: var(--font-mono);
-	font-size: 0.7rem;
-}
-
-@utility fs-note {
-	border-left: 2px solid var(--c-blue);
-	padding-left: 0.85rem;
-	font-family: var(--font-mono);
-	font-size: 0.75rem;
-	color: var(--c-blue-deep);
-	letter-spacing: 0.02em;
-	line-height: 1.55;
-}
-
-@utility fs-callout {
+@utility btn {
 	display: inline-flex;
 	align-items: center;
-	gap: 0.4rem;
-	padding: 0.25rem 0.6rem;
-	background: var(--c-blue-deep);
-	color: var(--c-paper);
-	font-family: var(--font-mono);
-	font-size: 0.64rem;
-	letter-spacing: 0.18em;
-	text-transform: uppercase;
-	font-weight: 600;
-}
-
-.corner-marks::before,
-.corner-marks::after {
-	content: "";
-	position: absolute;
-	width: 9px;
-	height: 9px;
-	border: 1px solid var(--c-blue-deep);
-	background: var(--c-paper);
-	z-index: 1;
-}
-.corner-marks::before {
-	top: -5px;
-	left: -5px;
-}
-.corner-marks::after {
-	bottom: -5px;
-	right: -5px;
+	justify-content: center;
+	gap: 0.5rem;
+	border-radius: 9999px;
+	font-family: var(--font-body);
+	font-weight: 700;
+	white-space: nowrap;
+	transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+	cursor: pointer;
 }
 
 /* ============ ANIMATIONS ============ */
@@ -243,8 +175,8 @@
 	}
 }
 .circuit-flow {
-	stroke-dasharray: 6 14;
-	animation: flow 2.4s linear infinite;
+	stroke-dasharray: 5 13;
+	animation: flow 2.6s linear infinite;
 }
 @media (prefers-reduced-motion: reduce) {
 	.circuit-flow {
@@ -252,34 +184,36 @@
 	}
 }
 
-@keyframes marquee {
-	from {
-		transform: translateX(0);
+@keyframes drift {
+	0%,
+	100% {
+		transform: translate(0, 0) scale(1);
 	}
-	to {
-		transform: translateX(-50%);
+	50% {
+		transform: translate(18px, -24px) scale(1.05);
 	}
 }
-.marquee-track {
-	display: inline-flex;
-	white-space: nowrap;
-	animation: marquee 32s linear infinite;
-	will-change: transform;
+.drift {
+	animation: drift 16s ease-in-out infinite;
+}
+.drift-slow {
+	animation: drift 22s ease-in-out infinite reverse;
 }
 @media (prefers-reduced-motion: reduce) {
-	.marquee-track {
+	.drift,
+	.drift-slow {
 		animation: none;
 	}
 }
 
-@keyframes ping-slow {
+@keyframes ping-soft {
 	0% {
 		transform: scale(1);
-		opacity: 0.7;
+		opacity: 0.6;
 	}
 	75%,
 	100% {
-		transform: scale(2.4);
+		transform: scale(2.6);
 		opacity: 0;
 	}
 }
@@ -288,6 +222,6 @@
 	position: absolute;
 	inset: 0;
 	border-radius: 9999px;
-	background: var(--c-blue-bright);
-	animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+	background: var(--bright);
+	animation: ping-soft 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }

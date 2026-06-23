@@ -1,11 +1,16 @@
-import "@fontsource-variable/mona-sans/wght.css";
 import "./globals.css";
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import { Fraunces, Nunito } from "next/font/google";
 import { company } from "@/data/company";
 
-const jetbrainsMono = JetBrains_Mono({
-	variable: "--font-jetbrains",
+const fraunces = Fraunces({
+	variable: "--font-fraunces",
+	subsets: ["latin"],
+	display: "swap",
+});
+
+const nunito = Nunito({
+	variable: "--font-nunito",
 	subsets: ["latin"],
 	display: "swap",
 });
@@ -42,7 +47,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="fr" className={jetbrainsMono.variable} suppressHydrationWarning>
+		<html lang="fr" className={`${fraunces.variable} ${nunito.variable}`} suppressHydrationWarning>
 			<head>
 				<script
 					// biome-ignore lint/security/noDangerouslySetInnerHtml: micro-script anti-FOUC
