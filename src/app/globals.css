@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+@source "../**/*.{ts,tsx}";
+
+/*
+ * Aquifroid — système « plan d'ingénieur » (blueprint light)
+ * Papier glacé, encre ardoise, bleus ColorHunt.
+ * Pile dans le ton d'un dossier technique frigorifique.
+ */
+
+:root {
+	/* palette ColorHunt */
+	--c-ink: #0c1b2e; /* encre ardoise */
+	--c-ink-soft: #34465c;
+	--c-blue-deep: #2c5ead;
+	--c-blue: #1591dc;
+	--c-blue-bright: #4bb8fa;
+	--c-blue-pale: #c4e2f5;
+	--c-paper: #f4f9fd; /* papier glacé froid */
+	--c-paper-edge: #e6f1fb;
+	--c-paper-warm: #fbfdff;
+	--c-line: #0c1b2e;
+	--c-margin: #9fb6cc;
+
+	--background: var(--c-paper);
+	--foreground: var(--c-ink);
+	--muted-foreground: #5a7088;
+	--border: var(--c-ink);
+	--accent: var(--c-blue);
+
+	--container-wide: 84rem;
+
+	--font-display: "Mona Sans Variable", "Mona Sans", system-ui, sans-serif;
+	--font-body: "Mona Sans Variable", "Mona Sans", system-ui, sans-serif;
+	--font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-ink: var(--c-ink);
+	--color-ink-soft: var(--c-ink-soft);
+	--color-blue-deep: var(--c-blue-deep);
+	--color-blue: var(--c-blue);
+	--color-blue-bright: var(--c-blue-bright);
+	--color-blue-pale: var(--c-blue-pale);
+	--color-paper: var(--c-paper);
+	--color-paper-edge: var(--c-paper-edge);
+	--color-paper-warm: var(--c-paper-warm);
+	--color-margin: var(--c-margin);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-border: var(--border);
+
+	--font-display: var(--font-display);
+	--font-sans: var(--font-body);
+	--font-mono: var(--font-mono);
+
+	--radius: 0px;
+}
+
+@layer base {
+	* {
+		border-color: var(--c-ink);
+		min-width: 0;
+	}
+	html {
+		font-family: var(--font-body);
+		-webkit-font-smoothing: antialiased;
+		scroll-behavior: smooth;
+	}
+	body {
+		background-color: var(--c-paper);
+		color: var(--c-ink);
+		font-family: var(--font-body);
+		font-feature-settings: "kern", "liga", "ss01";
+		background-image:
+			linear-gradient(to right, rgba(12, 27, 46, 0.035) 1px, transparent 1px),
+			linear-gradient(to bottom, rgba(12, 27, 46, 0.035) 1px, transparent 1px);
+		background-size: 34px 34px;
+	}
+	::selection {
+		background: var(--c-blue);
+		color: var(--c-paper);
+	}
+	::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+	::-webkit-scrollbar-track {
+		background: var(--c-paper-edge);
+	}
+	::-webkit-scrollbar-thumb {
+		background: var(--c-blue-deep);
+		border: 2px solid var(--c-paper-edge);
+	}
+}
+
+/* ============ TYPOGRAPHIE TECHNIQUE ============ */
+
+@utility container-wide {
+	width: 100%;
+	max-width: var(--container-wide);
+	margin-inline: auto;
+	padding-inline: clamp(1rem, 4vw, 3rem);
+}
+
+@utility fs-headline {
+	font-family: var(--font-display);
+	font-weight: 800;
+	letter-spacing: -0.03em;
+	line-height: 0.94;
+	text-transform: uppercase;
+}
+
+@utility fs-headline-thin {
+	font-family: var(--font-display);
+	font-weight: 300;
+	letter-spacing: -0.02em;
+	line-height: 1;
+}
+
+@utility fs-body {
+	font-family: var(--font-body);
+	line-height: 1.62;
+}
+
+@utility fs-mono {
+	font-family: var(--font-mono);
+	font-variant-numeric: tabular-nums;
+	font-feature-settings: "ss01";
+}
+
+@utility fs-label {
+	font-family: var(--font-mono);
+	font-size: 0.68rem;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	font-weight: 500;
+	color: var(--c-ink);
+}
+
+@utility fs-label-blue {
+	font-family: var(--font-mono);
+	font-size: 0.68rem;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: var(--c-blue-deep);
+}
+
+/* ============ COMPOSANTS « PLAN » ============ */
+
+@utility fs-sheet {
+	border: 1px solid var(--c-ink);
+	background: var(--c-paper-warm);
+	position: relative;
+}
+
+@utility fs-axis {
+	background-color: var(--c-paper-warm);
+	background-image:
+		linear-gradient(to right, rgba(44, 94, 173, 0.14) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(44, 94, 173, 0.14) 1px, transparent 1px);
+	background-size: 28px 28px;
+}
+
+@utility fs-dim {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--c-blue-deep);
+	font-family: var(--font-mono);
+	font-size: 0.7rem;
+}
+
+@utility fs-note {
+	border-left: 2px solid var(--c-blue);
+	padding-left: 0.85rem;
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	color: var(--c-blue-deep);
+	letter-spacing: 0.02em;
+	line-height: 1.55;
+}
+
+@utility fs-callout {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.25rem 0.6rem;
+	background: var(--c-blue-deep);
+	color: var(--c-paper);
+	font-family: var(--font-mono);
+	font-size: 0.64rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.corner-marks::before,
+.corner-marks::after {
+	content: "";
+	position: absolute;
+	width: 9px;
+	height: 9px;
+	border: 1px solid var(--c-blue-deep);
+	background: var(--c-paper);
+	z-index: 1;
+}
+.corner-marks::before {
+	top: -5px;
+	left: -5px;
+}
+.corner-marks::after {
+	bottom: -5px;
+	right: -5px;
+}
+
+/* ============ ANIMATIONS ============ */
+
+.js [data-reveal],
+.js [data-stagger-item] {
+	opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.js [data-reveal],
+	.js [data-stagger-item] {
+		opacity: 1;
+	}
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+.circuit-path {
+	stroke-dasharray: var(--len, 1000);
+	stroke-dashoffset: var(--len, 1000);
+}
+@keyframes flow {
+	to {
+		stroke-dashoffset: -200;
+	}
+}
+.circuit-flow {
+	stroke-dasharray: 6 14;
+	animation: flow 2.4s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+	.circuit-flow {
+		animation: none;
+	}
+}
+
+@keyframes marquee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+.marquee-track {
+	display: inline-flex;
+	white-space: nowrap;
+	animation: marquee 32s linear infinite;
+	will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+	.marquee-track {
+		animation: none;
+	}
+}
+
+@keyframes ping-slow {
+	0% {
+		transform: scale(1);
+		opacity: 0.7;
+	}
+	75%,
+	100% {
+		transform: scale(2.4);
+		opacity: 0;
+	}
+}
+.ping-dot::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 9999px;
+	background: var(--c-blue-bright);
+	animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}

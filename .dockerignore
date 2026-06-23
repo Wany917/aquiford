@@ -1,0 +1,29 @@
+**/.git
+**/.next
+**/node_modules
+**/out
+**/build
+**/dist
+**/.DS_Store
+**/.env*
+**/.vscode
+**/.idea
+**/.cache
+**/coverage
+**/.turbo
+**/.nx
+
+# fichiers de prévisualisation locale (pas dans l'image)
+preview-*.png
+
+# logs/temp
+**/npm-debug.log*
+**/yarn-error.log*
+**/bun-debug.log*
+*.tsbuildinfo
+next-env.d.ts
+
+# dockerfiles eux-mêmes (pas nécessaires dans l'image)
+Dockerfile*
+docker-compose*.yml
+.dockerignore

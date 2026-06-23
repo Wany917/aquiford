@@ -1,0 +1,45 @@
+# =============================================================================
+# Aquifroid — docker-compose pour Dokploy
+# -----------------------------------------------------------------------------
+# Dokploy gère le routage Traefik via son interface (domaine, TLS, ports).
+# Cette compose expose juste le service ; les labels Traefik sont en option,
+# laissés ici en commentaire au cas où tu déploierais en stand-alone (Swarm).
+# =============================================================================
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: aquifroid-web:latest
+    container_name: aquifroid-web
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: "1"
+      PORT: "3000"
+      HOSTNAME: "0.0.0.0"
+    expose:
+      - "3000"
+    # Dokploy auto-attache son réseau ; "dokploy-network" doit exister sur l'hôte.
+    networks:
+      - dokploy-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:3000/"]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+
+    # --- Traefik labels (facultatif : Dokploy peut les piloter depuis l'UI) ---
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.aquifroid.rule=Host(`aquifroid.com`) || Host(`www.aquifroid.com`)"
+    #   - "traefik.http.routers.aquifroid.entrypoints=websecure"
+    #   - "traefik.http.routers.aquifroid.tls=true"
+    #   - "traefik.http.routers.aquifroid.tls.certresolver=letsencrypt"
+    #   - "traefik.http.services.aquifroid.loadbalancer.server.port=3000"
+
+networks:
+  dokploy-network:
+    external: true
