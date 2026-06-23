@@ -16,12 +16,12 @@ const nunito = Nunito({
 });
 
 const description =
-	"Aquifroid — installation, dépannage et maintenance frigorifique en Creuse et région Limoges. Station technique du groupe SEBP (Pavailler · CFI · Bertrand Puma) et expertise CO₂ (R744). Rayon 150 km, intervention 24-48 h.";
+	"Aquifroid, installation, dépannage et maintenance frigorifique en Creuse et région Limoges. Station technique du groupe SEBP (Pavailler · CFI · Bertrand Puma) et expertise CO₂ (R744). Rayon 150 km, intervention 24-48 h.";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://www.aquifroid.com"),
 	title: {
-		default: "Aquifroid · Frigoriste — Station SEBP & Expertise CO₂",
+		default: "Aquifroid · Frigoriste · Station SEBP & Expertise CO₂",
 		template: "%s · Aquifroid",
 	},
 	description,

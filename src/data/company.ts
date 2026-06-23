@@ -16,7 +16,7 @@ export const company = {
 	},
 	radiusKm: 150,
 	interventionDelay: "24 à 48 h",
-	hours: "Lun – Ven · 8h00 – 18h00",
+	hours: "Du lundi au vendredi, 8h00 à 18h00",
 	emergency: "Astreinte dépannage pour les contrats d'entretien",
 } as const;
 
@@ -50,11 +50,11 @@ export const sebpBrands: SebpBrand[] = [
 
 /* Fiche technique CO₂ — base argumentaire R744 */
 export const co2Specs: { k: string; v: string }[] = [
-	{ k: "Fluide", v: "R744 — CO₂ pur" },
+	{ k: "Fluide", v: "R744 · CO₂ pur" },
 	{ k: "PRP (GWP)", v: "1 · vs R404a 3 922" },
 	{ k: "ODP", v: "0 · zéro impact ozone" },
 	{ k: "Régime subcritique", v: "≤ 73 bar / +31°C" },
-	{ k: "Régime transcritique", v: "70 – 130 bar · gas-cooler" },
+	{ k: "Régime transcritique", v: "70 à 130 bar · gas-cooler" },
 	{ k: "Application", v: "Froid commercial intensif & boulangerie" },
 ];
 
@@ -81,13 +81,13 @@ export const services: Service[] = [
 	{
 		mark: "SVC-03",
 		title: "Station technique SEBP",
-		body: "Service technique agréé pour les fours et matériels boulangerie-pâtisserie des marques Pavailler, CFI et Bertrand Puma — pièces d'origine, intervention homologuée.",
+		body: "Service technique agréé pour les fours et matériels boulangerie-pâtisserie des marques Pavailler, CFI et Bertrand Puma. Pièces d'origine, intervention homologuée.",
 		specs: ["Pavailler", "CFI", "Bertrand Puma", "Pièces d'origine"],
 	},
 	{
 		mark: "SVC-04",
 		title: "Expertise CO₂ (R744)",
-		body: "Mise en œuvre et maintenance d'installations CO₂ subcritique et transcritique — une technologie écologique (PRP 1) que peu d'acteurs régionaux maîtrisent.",
+		body: "Mise en œuvre et maintenance d'installations CO₂ subcritique et transcritique. Une technologie écologique (PRP 1) que peu d'acteurs régionaux maîtrisent.",
 		specs: ["Subcritique", "Transcritique", "Sécurité haute pression", "Formation continue"],
 	},
 ];

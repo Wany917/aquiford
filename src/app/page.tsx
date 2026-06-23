@@ -10,7 +10,6 @@ import {
 	Phone,
 	Quote,
 	Snowflake,
-	Sparkles,
 	ThermometerSnowflake,
 	Wrench,
 } from "lucide-react";
@@ -45,7 +44,7 @@ const cornerVariants = [
 
 const benefits = [
 	"Installation aux normes (F-Gaz, étanchéité, sécurité haute pression)",
-	"Station technique SEBP agréée — pièces d'origine constructeur",
+	"Station technique SEBP agréée, pièces d'origine constructeur",
 	"Expertise CO₂ subcritique et transcritique (R744)",
 	"Astreinte dépannage prioritaire pour les contrats d'entretien",
 ];
@@ -70,14 +69,11 @@ export default function Home() {
 
 					<div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
 						<div data-hero="title">
-							<span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/60 px-4 py-1.5 text-sm font-semibold text-primary shadow-soft backdrop-blur">
-								<Sparkles size={15} /> Station SEBP · Expertise CO₂
-							</span>
-							<h1 className="mt-6 font-display text-5xl font-semibold leading-[1.02] tracking-tight text-balance md:text-7xl">
+							<h1 className="font-display text-5xl font-semibold leading-[1.02] tracking-tight text-balance md:text-7xl">
 								Le froid, <span className="text-primary">sans rupture.</span>
 							</h1>
 							<p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-								{`${company.name} conçoit, installe et entretient vos équipements frigorifiques — station technique agréée du groupe SEBP (Pavailler · CFI · Bertrand Puma) et expertise R744 dans un rayon de ${company.radiusKm} km autour de Fursac (Creuse) et Limoges.`}
+								{`${company.name} conçoit, installe et entretient vos équipements frigorifiques. Station technique agréée du groupe SEBP (Pavailler · CFI · Bertrand Puma) et expertise R744, dans un rayon de ${company.radiusKm} km autour de Fursac (Creuse) et Limoges.`}
 							</p>
 							<div className="mt-9 flex flex-wrap items-center gap-4">
 								<a
@@ -151,7 +147,7 @@ export default function Home() {
 								Station technique du groupe SEBP
 							</h2>
 							<p className="mt-4 text-lg text-muted-foreground">
-								Un agrément qui valide la rigueur d'intervention — homologation, pièces d'origine et
+								Un agrément qui valide la rigueur d'intervention : homologation, pièces d'origine et
 								procédures constructeur, sur les fours et matériels boulangerie-pâtisserie des trois
 								marques.
 							</p>
@@ -204,15 +200,13 @@ export default function Home() {
 									1, zéro impact ozone, performance excellente sur le froid intensif.
 								</p>
 								<p data-stagger-item className="text-base leading-relaxed text-muted-foreground">
-									Sa contrepartie : haute pression (jusqu'à 130 bar en transcritique), procédures de
+									Sa contrepartie : haute pression jusqu'à 130 bar en transcritique, procédures de
 									sécurité strictes, formation continue. C'est ce qui en décourage la majorité.
 								</p>
-								<p
-									data-stagger-item
-									className="rounded-2xl border-l-4 border-bright bg-white/60 p-4 text-base leading-relaxed text-foreground"
-								>
-									Nous, on l'installe, on le dépanne et on l'entretient — subcritique comme
-									transcritique. C'est la spécialisation engagée en {company.specializedSince}.
+								<p data-stagger-item className="text-base leading-relaxed text-muted-foreground">
+									Nous, on l'installe, on le dépanne et on l'entretient, en subcritique comme en
+									transcritique. C'est la spécialisation qu'on a engagée en{" "}
+									{company.specializedSince}.
 								</p>
 							</div>
 						</div>
@@ -247,7 +241,7 @@ export default function Home() {
 									))}
 								</dl>
 								<p className="mt-6 pt-4 border-t border-border text-[0.7rem] text-muted-foreground">
-									PRP / GWP — règlement F-Gaz (UE) 517/2014.
+									PRP / GWP : règlement F-Gaz (UE) 517/2014.
 								</p>
 							</div>
 						</div>
@@ -266,7 +260,7 @@ export default function Home() {
 							</h2>
 							<p className="mt-4 text-lg text-muted-foreground">
 								Du linéaire de supermarché à la chambre froide négative, en passant par le four
-								boulangerie SEBP et la centrale CO₂ transcritique — une équipe, un suivi durable.
+								boulangerie SEBP et la centrale CO₂ transcritique. Une équipe, un suivi durable.
 							</p>
 						</div>
 
@@ -488,7 +482,7 @@ export default function Home() {
 					<div className="mx-auto max-w-4xl text-center" data-reveal>
 						<Quote className="mx-auto h-10 w-10 text-bright" />
 						<p className="mt-6 font-display text-2xl font-semibold leading-snug text-balance md:text-3xl">
-							« Une rupture de froid coûte cher. Notre métier, c'est qu'elle n'arrive jamais — et
+							« Une rupture de froid coûte cher. Notre métier, c'est qu'elle n'arrive jamais. Et
 							quand un imprévu survient, qu'on soit là très vite. »
 						</p>
 						<p className="mt-6 text-sm font-bold uppercase tracking-[0.18em] text-muted-foreground">
@@ -579,7 +573,7 @@ export default function Home() {
 							<span className="mx-2">·</span>
 							{company.address.zip} {company.address.city}
 							<p className="mt-1 text-xs">
-								© {year} {company.legalName} — Frigoriste & station SEBP
+								© {year} {company.legalName} · Frigoriste & station SEBP
 							</p>
 						</div>
 					</div>

@@ -62,15 +62,8 @@ export function SmoothScroll() {
 				delay: 0.15,
 			});
 
-			const hero = document.querySelector<HTMLElement>("[data-hero='title']");
-			if (hero) {
-				gsap.to(hero, {
-					yPercent: -10,
-					opacity: 0.55,
-					ease: "none",
-					scrollTrigger: { trigger: hero, start: "top top", end: "+=420", scrub: 0.6 },
-				});
-			}
+			// (parallax/scrub sur le hero retiré — il causait un titre invisible
+			// quand on remontait au top après avoir scrollé)
 
 			// Reveal simple
 			gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
